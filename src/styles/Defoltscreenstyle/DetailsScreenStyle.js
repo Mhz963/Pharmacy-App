@@ -1,0 +1,635 @@
+import { SF, SH, SW, Colors, Fonts } from '../../utils';
+import { StyleSheet, Dimensions } from 'react-native';
+
+export default DetailsScreenStyle = (Colors) => StyleSheet.create({
+  contentContainerStyle: {
+    width: '100%',
+    height: 'auto'
+  },
+  minstyleviewphotograpgy: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    height: '100%',
+    width: '100%',
+    backgroundColor: Colors.bgwhite
+  },
+  bgcolorset: {
+    backgroundColor: Colors.bgwhite
+  },
+  minviewsigninscreen: {
+    width: '100%',
+    height: '100%',
+    // marginHorizontal: '5%',
+  },
+  minflexview: {
+    width: '100%',
+    height: '100%',
+  },
+  bgwhiteboxminview: {
+    backgroundColor: Colors.bgwhite,
+    color: Colors.black_text_color,
+    borderTopLeftRadius: SW(40),
+    borderTopRightRadius: SW(40),
+    paddingBottom: SH(30),
+    marginTop: SH(-150),
+    shadowColor: Colors.indigo_color,
+    fontFamily: 'DMSans-Medium',
+    shadowOffset: {
+      width: 0,
+      height: Platform.OS === 'ios' ? 2 : 25,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: Platform.OS === 'ios' ? 2 : 25,
+    elevation: Platform.OS === 'ios' ? 1 : 3,
+    height: '100%',
+  },
+  bgwhiteboxsmall: {
+    backgroundColor: Colors.bgwhite,
+    color: Colors.black_text_color,
+    position: 'absolute',
+    top: SH(40),
+    left: SW(60),
+    width: '60%',
+    paddingLeft: SW(20),
+    paddingRight: SW(30),
+    paddingVertical: SH(7),
+    borderRadius: SW(30),
+    marginBottom: SH(30),
+    marginTop: SH(-60),
+    zIndex: 1,
+    shadowColor: Colors.indigo_color,
+    fontFamily: 'DMSans-Medium',
+    paddingRight: SW(15),
+    shadowOffset: {
+      width: 0,
+      height: Platform.OS === 'ios' ? 2 : 25,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: Platform.OS === 'ios' ? 2 : 25,
+    elevation: Platform.OS === 'ios' ? 1 : 4,
+  },
+  imagsetstyle: {
+    width: '100%',
+    height: '100%',
+  },
+  setimagestylewidth: {
+    width: '100%',
+    height: SH(380),
+    backgroundColor: Colors.theme_background
+  },
+  flrxfireiocnview: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.43)',
+    height: SH(38),
+    width: SW(80),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: SW(100),
+    borderWidth: 1,
+    borderColor: Colors.white_text_color,
+    position: 'absolute',
+    top: SH(35),
+    right: SW(10),
+    zIndex: 123,
+  },
+  setbgcolor: {
+    height: SW(19),
+    width: SW(19),
+    backgroundColor: Colors.silver_sand_color,
+    borderRadius: SW(100),
+  },
+  setbgcolortwo: {
+    height: SW(19),
+    width: SW(19),
+    backgroundColor: Colors.silver_sand_color,
+    borderRadius: SW(100),
+    marginLeft: SW(-4),
+    marginRight: SW(5),
+  },
+  setdotflex: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  caltextstyle: {
+    color: Colors.white_text_color,
+    fontFamily: Fonts.Metropolis_Medium,
+    marginRight: SW(5),
+    fontWeight: '700'
+  },
+  setallpading: {
+    padding: SW(15),
+    paddingRight: SW(10),
+    paddingTop: SH(20),
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    borderTopLeftRadius: SW(25),
+    borderTopRightRadius: SW(25)
+  },
+  settextweight: {
+    color: Colors.black_text_color,
+    fontSize: SF(16),
+    fontFamily: Fonts.Poppins_Medium,
+    fontWeight: '700',
+  },
+  suhanitextstop: {
+    color: Colors.granite_Gray_color,
+    fontFamily: Fonts.Roboto_Regular,
+    fontWeight: '600',
+    fontSize: SF(12),
+  },
+  setbgcolorborder: {
+    backgroundColor: Colors.bgwhite,
+    width: SW(50),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: SW(50),
+    borderRadius: SW(100),
+    borderWidth: SW(2),
+    position: 'absolute',
+    right: SW(30),
+    top: SH(-30),
+  },
+  descriptiontextset: {
+    fontSize: SF(20),
+    fontWeight: '700',
+    fontFamily: Fonts.Metropolis_Medium,
+    color: Colors.theme_background
+  },
+  descripitionviewone: {
+    paddingTop: SH(20),
+    width: '55%'
+  },
+  descripitionviewtwo: {
+    paddingTop: SH(20),
+  },
+  paregraphtextset: {
+    color: Colors.wenge_color,
+    fontSize: SF(11),
+    paddingTop: SH(10),
+    fontWeight: '400',
+    fontFamily: Fonts.Poppins_Medium,
+  },
+  paregraphtextsettwo: {
+    color: Colors.theme_background,
+    fontSize: SF(11.5),
+    paddingTop: SH(10),
+    fontWeight: '400',
+    fontFamily: Fonts.Poppins_Medium,
+  },
+  nuteialtext: {
+    fontSize: SF(15),
+    paddingBottom: SH(4),
+    fontWeight: '400',
+    fontFamily: Fonts.Poppins_Medium,
+    borderBottomColor: Colors.bggray,
+    borderBottomWidth: SW(1),
+    marginBottom: SH(7),
+    color: Colors.theme_background
+  },
+  flextextset: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  proteintextset: {
+    color: Colors.smoky_black_color,
+    fontSize: SF(9),
+    fontWeight: '400',
+    fontFamily: Fonts.Roboto_Regular,
+  },
+  setdigitaltextview: {
+    color: Colors.black_text_color,
+    fontSize: SF(10),
+    fontWeight: '700',
+    fontFamily: Fonts.Poppins_Medium,
+  },
+  flexclockandtext: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  flexclockandtextwo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    position: 'relative',
+    left: SW(10),
+  },
+  thretexztflexview: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderWidth: SW(1),
+    borderColor: Colors.bright_gray_color,
+    paddingTop: SH(-18),
+    paddingBottom: SH(6),
+    paddingHorizontal: SW(7),
+    borderRadius: SW(20),
+    marginTop: SH(15),
+  },
+  thretexztflexviewtwo: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: SH(12),
+  },
+  setclockicon: {
+    position: 'relative',
+    top: SH(3),
+    left: SW(-4),
+  },
+  borderbottomview: {
+    borderBottomWidth: SW(1),
+    paddingBottom: SH(10),
+    borderBottomColor: Colors.gray_text_color
+  },
+  textcolorgray: {
+    color: Colors.spanish_gray_color,
+    fontSize: SF(10),
+    fontWeight: '400',
+    fontFamily: Fonts.Roboto_Regular,
+  },
+  textcolorgraytwo: {
+    color: Colors.black_text_color,
+    opacity: 0.7,
+    fontSize: SF(10),
+    fontWeight: '400',
+    fontFamily: Fonts.Roboto_Regular,
+  },
+  setboxshadowimage: {
+    backgroundColor: Colors.bgwhite,
+    paddingLeft: SW(5),
+    width: '100%',
+    paddingTop: SH(12),
+    paddingBottom: SH(14),
+    borderRadius: SW(20),
+    marginBottom: SH(30),
+    marginTop: SH(15),
+    shadowColor: Colors.indigo_color,
+    fontFamily: 'DMSans-Medium',
+    paddingRight: SW(5),
+    shadowOffset: {
+      width: 0,
+      height: Platform.OS === 'ios' ? 2 : 25,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: Platform.OS === 'ios' ? 2 : 25,
+    elevation: Platform.OS === 'ios' ? 1 : 4,
+  },
+  smalltextsetingredients: {
+  },
+  boximage: {
+    width: SW(60),
+    height: SH(40),
+    borderRadius: SW(16),
+    marginRight: SW(20),
+  },
+  setflex: {
+    paddingLeft: SW(10),
+  },
+  setwidthbox: {
+    width: '90%',
+    marginHorizontal: '5%'
+  },
+  smalltextsetingredients: {
+    color: Colors.sonic_silver_color,
+    fontSize: SF(17),
+    paddingBottom: SH(9),
+    paddingLeft: SW(10),
+  },
+  setbgcolorview: {
+    backgroundColor: Colors.anti_flash_white_color_two,
+    flexDirection: 'row',
+    paddingVertical: SH(8),
+    paddingHorizontal: SW(15),
+    width: '73%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderRadius: SW(20),
+  },
+  widthsetbgcolor: {
+    width: '100%',
+    paddingHorizontal: '5%',
+    flexDirection: 'row',
+    paddingTop: SH(40),
+    justifyContent: 'space-between'
+  },
+  selectuser: {
+    color: Colors.wenge_color,
+    fontSize: SF(15),
+    fontWeight: '400',
+    fontFamily: Fonts.Roboto_Regular,
+    marginRight: SW(20),
+  },
+  useronetext: {
+    color: Colors.gray_text_color,
+    fontSize: SF(15),
+    fontWeight: '400',
+    fontFamily: Fonts.Roboto_Regular,
+    marginRight: SW(20),
+  },
+  flexiconviewset: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  edittext: {
+    color: Colors.sonic_silver_color_two,
+    fontSize: SF(15),
+    fontWeight: '400',
+    fontFamily: Fonts.Roboto_Regular,
+    marginRight: SW(5),
+  },
+  setminviewwidth: {
+    width: '90%',
+    marginHorizontal: '5%',
+    height: 'auto'
+  },
+  additionstextstyle: {
+    color: Colors.wenge_color,
+    fontSize: SF(15),
+    fontWeight: '600',
+    fontFamily: Fonts.Poppins_Medium,
+  },
+  additionstextstyletwo: {
+    color: Colors.wenge_color,
+    fontSize: SF(17),
+    fontWeight: '600',
+    fontFamily: Fonts.Poppins_Medium,
+    paddingLeft: SW(20),
+  },
+  textwidthiconflex: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    borderWidth: SW(1),
+    borderRadius: SW(100),
+    paddingLeft: SW(10),
+    paddingRight: SW(10),
+    paddingVertical: SH(6),
+    borderColor: Colors.bittersweet_color
+  },
+  jalapenotextset: {
+    color: Colors.wenge_color,
+    fontSize: SF(14),
+    fontWeight: '600',
+    fontFamily: Fonts.Poppins_Medium,
+  },
+  setbgcolorviewtwo: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: SH(30),
+    paddingTop: SH(15),
+    paddingHorizontal: SW(20),
+    paddingBottom: SH(15),
+    borderTopLeftRadius: SW(30),
+    borderTopRightRadius: SW(30),
+    position: 'absolute',
+    width: '100%',
+    bottom: 0,
+    backgroundColor: Colors.theme_background
+
+  },
+  setselectmedicineview: {
+    height: SH(40),
+    borderRadius: SW(13),
+    marginHorizontal: '1%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.theme_background
+  },
+  settextstylecolor: {
+    color: Colors.white_text_color,
+    fontFamily: Fonts.Metropolis_Medium,
+    fontSize: SF(21),
+    fontWeight: '700',
+  },
+  plusandminusflexview: {
+    flexDirection: 'row',
+    borderWidth: SW(1),
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderColor: 'white',
+    borderRadius: SW(100),
+    width: SW(130),
+    paddingHorizontal: SW(15),
+    paddingTop: SH(5),
+  },
+  pricetextsetview: {
+    color: Colors.white_text_color,
+    fontSize: SF(19),
+    fontWeight: '600',
+    fontFamily: Fonts.Poppins_Medium,
+  },
+  pricetextsetviewtwo: {
+    color: Colors.white_text_color,
+    fontSize: SF(19),
+    fontWeight: '600',
+    fontFamily: Fonts.Poppins_Medium,
+    position: 'relative',
+    top: SH(4),
+  },
+  setbgcolorwhite: {
+    backgroundColor: Colors.bgwhite,
+    width: SW(40),
+    height: SH(40),
+    borderRadius: SW(100),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  positionabsoluteicon: {
+    position: 'absolute',
+    top: SH(7),
+    left: SW(-10),
+    width: SW(90),
+    height: SH(90),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.bggray,
+    opacity: 0.9,
+    position: 'relative'
+  },
+  modalView: {
+    backgroundColor: Colors.cultured_f6f6f6_color,
+    borderRadius: SW(20),
+    width: '90%',
+    height: '70%',
+    paddingLeft: SW(5),
+    paddingRight: SW(15),
+    paddingVertical: SH(10),
+  },
+  modalViewtwo: {
+    backgroundColor: Colors.cultured_f6f6f6_color,
+    borderRadius: SW(20),
+    width: '90%',
+    paddingHorizontal: SW(20),
+    paddingVertical: SH(30),
+  },
+  button: {
+    borderRadius: SW(20),
+    padding: SW(10),
+    elevation: 2,
+    flexDirection: 'row'
+  },
+  buttonOpen: {
+    backgroundColor: Colors.btn_open_bgcolor,
+  },
+  buttonClose: {
+    backgroundColor: Colors.btn_close_bgcolor,
+  },
+  textStyle: {
+    color: Colors.white_text_color,
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: SH(15),
+    textAlign: "center"
+  },
+  modalbgwhiteshadow: {
+    backgroundColor: Colors.bgwhite,
+    color: Colors.black_text_color,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: SW(10),
+    marginBottom: SH(20),
+    shadowColor: Colors.indigo_color,
+    fontFamily: 'DMSans-Medium',
+    paddingLeft: SW(12),
+    paddingRight: SW(15),
+    shadowOffset: {
+      width: 0,
+      height: Platform.OS === 'ios' ? 2 : 25,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: Platform.OS === 'ios' ? 2 : 25,
+    elevation: Platform.OS === 'ios' ? 1 : 4,
+  },
+  flexrowsettextbgcolor: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: Colors.white_text_color,
+    borderRadius: SW(27),
+    paddingHorizontal: '7%',
+    height: SH(69),
+    marginBottom: SH(19),
+    alignItems: 'center',
+  },
+  setdropdownstyle: {
+    width: '100%',
+    borderWidth: SW(1),
+    borderRadius: SW(100),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: SW(20),
+    height: SH(40),
+    backgroundColor: Colors.bgwhite,
+  },
+  dropdown1BtnTxtStyle: {
+    color: Colors.wenge_color,
+    fontSize: SF(17),
+    fontWeight: '600',
+    fontFamily: Fonts.Poppins_Medium,
+    textAlign: 'left',
+  },
+  dropdown1DropdownStyle: {
+    backgroundColor: Colors.bgwhite
+  },
+  dropdown1RowStyle: {
+    backgroundColor: Colors.dropdown_rowcolor,
+    borderBottomColor: Colors.silver_sand_color
+  },
+  dropdown1RowTxtStyle: {
+    color: Colors.droptextcolor,
+    fontSize: SF(18),
+    fontWeight: '600',
+    fontFamily: Fonts.Poppins_Medium,
+    textAlign: 'left',
+  },
+  simplestatetext: {
+    color: Colors.black_text_color,
+    fontWeight: '600',
+    opacity: 0.7,
+    fontFamily: Fonts.Metropolis_Medium,
+    fontSize: SF(18),
+    borderBottomWidth: SW(1.5),
+    borderStyle: 'dashed',
+    paddingVertical: SH(10),
+    borderBottomColor: Colors.theme_background
+  },
+  wishicon: {
+    backgroundColor: Colors.bg_red
+  },
+  settextstyle: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: Colors.bgwhite,
+    position: 'absolute',
+    top: SH(35),
+    left: SW(10),
+    width: SW(50),
+    height: SH(50),
+    borderRadius: SW(17),
+  },
+  setbgcolorviewtwoview: {
+    borderRadius: SW(14),
+    width: SW(40),
+    height: SH(40),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.theme_background
+  },
+  textstyle: {
+    fontFamily: Fonts.Metropolis_Medium,
+    fontSize: SF(33),
+    fontWeight: '800',
+    lineHeight: SH(30),
+    textAlign: 'center',
+    color: Colors.white_text_color,
+  },
+  setbgcolorborder: {
+    backgroundColor: Colors.bgwhite,
+    width: SW(50),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: SH(50),
+    zIndex: 1,
+    borderRadius: SW(100),
+    shadowColor: Colors.indigo_color,
+    shadowOffset: {
+      width: 0,
+      height: Platform.OS === 'ios' ? 0 : 25,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: Platform.OS === 'ios' ? 0 : 25,
+    elevation: Platform.OS === 'ios' ? 0 : 3,
+    position: 'absolute',
+    right: SW(20),
+    top: SH(-20)
+  },
+  icomvloseselectwrap: {
+    width: '100%',
+    direction: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    textAlign: 'right',
+    paddingHorizontal: '5%'
+  },
+  icomvloseselect: {
+    width: 'auto',
+  },
+
+});

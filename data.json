@@ -1,0 +1,107 @@
+[
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/bensedin.png",
+      "ID": "0",
+      "name": "Galenika Bensedin 10mg Diazepam",
+      "SKU": "1B1-GBDI",
+      "price": "£39.99 – £129.99",
+      "category": "Sleep Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/dihydrocodeine-768x513.png",  
+      "ID": "1",
+      "name": "Dihydrocodeine 30mg",
+      "SKU": "1A3-DYC",
+      "price": "£39.99 – £149.99",
+      "category": "Pain Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/Codeine-Phosphate.jpg",
+      "ID": "2",
+      "name": "Codeine Phosphate 30mg",
+      "SKU": "1A2-COPH",
+      "price": "£29.99 – £44.99",
+      "category": "Pain Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/zolpidem-zentiva.png",
+      "ID": "3",
+      "name": "Zolpidem 10mg",
+      "SKU": "1C3-ZLP",
+      "price": "£39.99 – £109.99",
+      "category": "Sleep Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/tram-225.jpg",
+      "ID": "4",
+      "name": "Tramadol 225mg",
+      "SKU": "1D1-TRM",
+      "price": "£19.99 – £99.99",
+      "category": "Pain Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/Pregab-300-nerv-1024x1024.jpg",
+      "ID": "5",
+      "name": "Pregabalin 300mg Nervigesic",
+      "SKU": "1C1-PGNV",
+      "price": "£19.99 – £129.99",
+      "category": "Pain Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/07/Tramadol-100-1024x1024.jpg",
+      "ID": "6",
+      "name": "Tramadol 100 mg",
+      "SKU": "1C2-TRM",
+      "price": "£24.99 – £69.99",
+      "category": "Pain Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/Tramodol-50mg-1024x1024.jpg",
+      "ID": "7",
+      "name": "Tramadol 50mg",
+      "SKU": "1D3-TRM",
+      "price": "£29.99 – £99.99",
+      "category": "Pain Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/zopiclone-75mg-img-1.jpg",
+      "ID": "8",
+      "name": "Zopiclone 7.5mg UK/EU",
+      "SKU": "1D2-ZLP",
+      "price": "£34.99 – £89.99",
+      "category": "Sleep Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/Pregb-300mg-1024x1024.jpg",
+      "ID": "9",
+      "name": "Pregabalin 300mg",
+      "SKU": "1B3-PG",
+      "price": "£24.99 – £174.99",
+      "category": "Pain Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/zopiclone-75mg-hab.jpg",
+      "ID": "10",
+      "name": "HAB Zopiclone 7.5mg",
+      "SKU": "1B2-HBZP",
+      "price": "£14.99 – £84.99",
+      "category": "Sleep Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/Co-Codamol.jpg",
+      "ID": "11",
+      "name": "Co codamol/codeine 30mg/500",
+      "SKU": "1A1-COCO",
+      "price": "£19.99 – £62.99",
+      "category": "Pain Relief"
+    },
+    {
+      "image": "https://justpillsuk.com/wp-content/uploads/2023/05/Zopiclone.jpg",
+      "ID": "12",
+      "name": "Zopisign Zopiclone 10mg",
+      "SKU": "1E1-ZLP",
+      "price": "£34.99 – £109.99",
+      "category": "Sleep Relief"
+    }
+  ]
+  
