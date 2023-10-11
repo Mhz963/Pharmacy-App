@@ -14,12 +14,12 @@ const DealsOfTheDay = (props) => {
     return (
         <View style={HometabStyles.setbgcolorviewtime}>
             <TouchableOpacity style={HometabStyles.flexrowsecenterimage} onPress={() => onPress()}>
-                <Image style={HometabStyles.whiteboximage} resizeMode="contain" source={item.image} />
+                <Image style={HometabStyles.whiteboximage} resizeMode="contain" source={{uri: item.image}} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => onPress()}>
-                <Text style={HometabStyles.setnormatextstyle}>{t(item.text)}</Text>
+                <Text style={HometabStyles.setnormatextstyle}>{t(item.name)}</Text>
             </TouchableOpacity>
-            <Text style={[HometabStyles.settextcolorcenterthree, HometabStyles.settextcolorcenterthreetow]}>{t(item.hospitalname)}</Text>
+            <Text style={[HometabStyles.settextcolorcenterthree, HometabStyles.settextcolorcenterthreetow]}>{t(item.category)}</Text>
             <View style={HometabStyles.flexrowjuctycenter}>
                 <RatingFun
                     type='custom'
@@ -34,8 +34,8 @@ const DealsOfTheDay = (props) => {
             </View>
             <Spacing />
             <View style={HometabStyles.flexrowsettext}>
-                <Text style={HometabStyles.settextprice}> {pricesymboldata + ' ' + item.dolardpricetext}</Text>
-                <Text style={HometabStyles.settextpricetwo}>{pricesymboldata + ' ' + item.dolardpricetexttwo}</Text>
+                <Text style={HometabStyles.settextprice}>{item.price.split(" – ")[1]}</Text>
+                <Text style={HometabStyles.settextpricetwo}>{pricesymboldata}{(Number(item.price.split(" – ")[1].replace('£', '')) * 1.1).toFixed(2)}</Text>
             </View>
             <View style={HometabStyles.flexrocenterjusty}>
                 <View style={HometabStyles.addbutttonwidth}>
@@ -45,7 +45,7 @@ const DealsOfTheDay = (props) => {
                 </View>
             </View>
             <View style={HometabStyles.settextinbgcolor}>
-                <Text style={HometabStyles.setdescounrtextstyle}>{t(item.offdecount)}</Text>
+                <Text style={HometabStyles.setdescounrtextstyle}>{t('Discount10Off_Label')}</Text>
             </View>
             <Text style={HometabStyles.outoftextset}>{t(item.outofstock)}</Text>
         </View>

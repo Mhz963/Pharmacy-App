@@ -11,7 +11,9 @@ import { SearchHeaderScreen } from '../../../screens';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@react-navigation/native';
 import { price_symbol_action } from '../../../redux/action/CommonAction';
-import { SH, MedicineCategoryHomeTab, MegaMedicine, MedicineFalteList, TodayDeals } from '../../../utils';
+import { SH, MedicineCategoryHomeTab, MegaMedicine } from '../../../utils';
+import TodayDeals from "../../../../data.json"
+import {add_cart} from '../../../redux/action/cartAction';
 
 const HomeTabset = (props) => {
   const { navigation } = props;
@@ -21,6 +23,7 @@ const HomeTabset = (props) => {
   const { t } = useTranslation();
   const { Colors } = useTheme();
   const HometabStyles = useMemo(() => HometabStyle(Colors), [Colors]);
+  const {cartData} = useSelector(state => state.cartInfo)
 
   let PriceSymbol = '£';
   useEffect(() => {
@@ -28,11 +31,13 @@ const HomeTabset = (props) => {
   }, []);
 
   const doctordata = (docterdata) => {
+    dispatch(add_cart([...cartData, docterdata]));
     dispatch(get_doctore_detailes_action(docterdata))
     navigation.navigate(RouteName.CART_TAB)
   }
 
   const doctordatatendingmenu = (docterdata) => {
+    dispatch(add_cart([...cartData, docterdata]));
     dispatch(get_doctore_detailes_action(docterdata))
     navigation.navigate(RouteName.CART_TAB)
   }
@@ -78,8 +83,8 @@ const HomeTabset = (props) => {
               <FlatList
                 data={TodayDeals}
                 renderItem={({ item, index }) => (
-                  <DealsOfTheDay item={item}
-                    onPress={() => navigation.navigate((RouteName.PRODUCT_DETAILS_SCREEN), { img: item.image, title: item.text, hname: item.hospitalname })}
+                  <DealsOfTheDay key={index} item={item}
+                    onPress={() => navigation.navigate(RouteName.PRODUCT_DETAILS_SCREEN, { img: item.image, sku: item.SKU, name: item.name })}
                     DoctorHandle={() => doctordata(item)}
                     pricesymboldata={pricesymboldata}
                   />)}
@@ -91,11 +96,14 @@ const HomeTabset = (props) => {
             </View>
             <Text style={HometabStyles.settopcategories}>{t("Popular_Medicine_Label")}</Text>
             <FlatList
-              data={MedicineFalteList}
+              data={TodayDeals}
               renderItem={({ item, index }) => (
-                <PopularHomeFlatFun item={item}
-                  onPress={() => navigation.navigate((RouteName.PRODUCT_DETAILS_SCREEN), { img: item.image, title: item.text, hname: item.hospitalname })}
-                  CartTabHandle={() => navigation.navigate((RouteName.CART_TAB), { img: item.image, title: item.text, hname: item.hospitalname })}
+                <PopularHomeFlatFun key={index} item={item}
+                  onPress={() => navigation.navigate(RouteName.PRODUCT_DETAILS_SCREEN, { img: item.image, sku: item.SKU, name: item.name })}
+                  CartTabHandle={() => {
+                    dispatch(add_cart([...cartData, item]));
+                    navigation.navigate(RouteName.CART_TAB);
+                  }}
                   pricesymboldata={pricesymboldata}
                 />)}
               keyExtractor={item => item.id}

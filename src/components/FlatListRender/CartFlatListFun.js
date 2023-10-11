@@ -21,7 +21,7 @@ const CartFlatListFun = (props) => {
                     <Image style={CartTabStyles.setimagehightwidth} resizeMode="contain" source={images.cartitemImg} />
                 </View>
                 <View>
-                    <Text style={CartTabStyles.pistahouse}>{t(item.itemName)}</Text>
+                    <Text style={CartTabStyles.pistahouse}>{t(item.name)}</Text>
                 </View>
             </View>
             <View style={[CartTabStyles.flexiconandimagetext, CartTabStyles.bgcolorset]}>

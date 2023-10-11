@@ -16,13 +16,13 @@ const PopularHomeFlatFun = (props) => {
         <View style={HometabStyles.populaitemnearby}>
             <View style={HometabStyles.flexrowtextandimage}>
                 <TouchableOpacity style={HometabStyles.setimagewidthsevnty} onPress={() => onPress()}>
-                    <Image style={HometabStyles.whiteboximagetwoset} resizeMode="cover" source={item.image} />
+                    <Image style={HometabStyles.whiteboximagetwoset} resizeMode="cover" source={{uri: item.image}} />
                 </TouchableOpacity>
                 <View style={HometabStyles.setwidthalltext}>
                     <TouchableOpacity onPress={() => onPress()}>
-                        <Text style={HometabStyles.settextpricebold} >{t(item.text)}</Text>
+                        <Text style={HometabStyles.settextpricebold} >{t(item.name)}</Text>
                     </TouchableOpacity>
-                    <Text style={[HometabStyles.settextcolorcentertwo]}>{t(item.hospitalname)}</Text>
+                    <Text style={[HometabStyles.settextcolorcentertwo]}>{t(item.category)}</Text>
                     <View style={HometabStyles.flexstarticon}>
                         <RatingFun
                             type='custom'
@@ -38,7 +38,7 @@ const PopularHomeFlatFun = (props) => {
                     </View>
                     <View style={HometabStyles.flexrowsetrating}>
                         <View style={HometabStyles.dicscounttextflex}>
-                            <Text style={HometabStyles.settextpricebold}>{pricesymboldata} 4.57</Text>
+                            <Text style={HometabStyles.settextpricebold}>{item.price.split(" – ")[1]}</Text>
                         </View>
                     </View>
                 </View>

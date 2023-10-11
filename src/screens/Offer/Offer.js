@@ -10,11 +10,15 @@ import { OfferTabFlatFun, VectoreIcons } from '../../components';
 import { SF, FastPharmacyOfferTab } from '../../utils';
 import data from "../../../data.json"
 import StylishButton from './StylishButton';
+import {useDispatch, useSelector} from 'react-redux';
+import {add_cart} from '../../redux/action/cartAction';
 
 const Offer = (props) => {
     const { navigation } = props;
     const { t } = useTranslation();
     const { Colors } = useTheme();
+    const dispatch = useDispatch();
+    const {cartData} = useSelector(state => state.cartInfo)
     const OffersTabStyles = useMemo(() => OffersTabStyle(Colors), [Colors]);
     const Largediscount = () => {
         navigation.navigate(RouteName.PRODUCT_LIST_ITEM);
@@ -48,8 +52,8 @@ const Offer = (props) => {
                                         <StylishButton
                                             title="Add to Cart"
                                             onPress={() => {
-                                                console.log('Navigating to CartTab with product:', product);
-                                                navigation.navigate(RouteName.CART_TAB, { product: "asda", });
+                                                dispatch(add_cart([...cartData, product]));
+                                                navigation.navigate(RouteName.CART_TAB);
                                             }}
                                         />
 

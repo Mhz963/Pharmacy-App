@@ -4,7 +4,8 @@ import { ProductItemListStyle } from '../../../styles';
 import { RouteName } from '../../../routes';
 import { useDispatch } from "react-redux";
 import { get_doctore_detailes_action } from '../../../redux/action/DoctoreDataAction';
-import { Colors, SH, SF, Docterproductdata } from '../../../utils';
+import { Colors, SH, SF } from '../../../utils';
+import Docterproductdata from "../../../../data.json"
 import { useSelector } from "react-redux";
 import { price_symbol_action } from '../../../redux/action/CommonAction';
 import { useTranslation } from 'react-i18next';
@@ -49,8 +50,8 @@ const ProductItemList = (props) => {
             <FlatList
               data={Docterproductdata}
               numColumns={2}
-              renderItem={({ item, index }) => (<ProductListFun item={item} index={index} CartHandle={() => navigation.navigate(RouteName.CART_TAB)}
-                ProductDatilsHandle={() => navigation.navigate((RouteName.PRODUCT_DETAILS_SCREEN), { img: item.image, title: item.text, hname: item.hospitalname })}
+              renderItem={({ item, index }) => (<ProductListFun key={index} item={item} index={index} CartHandle={() => navigation.navigate(RouteName.CART_TAB)}
+                ProductDatilsHandle={() => navigation.navigate(RouteName.PRODUCT_DETAILS_SCREEN, { img: item.image, sku: item.SKU, name: item.name })}
                 pricesymboldata={pricesymboldata}
                 LikUnlikeFun={() => LikUnlikeFun(index)}
                 liked={liked}

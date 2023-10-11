@@ -12,14 +12,11 @@ import { useTheme } from '@react-navigation/native';
 
 
 
-const CartTab = ({ route, ...props }) => {
-  console.log("params", route.params)
+const CartTab = ({ route, navigation }) => {
 
-  const { product } = route.params || {}; // Get the product object from route.params
-
+  const {cartData: cartDataInfo} = useSelector(state => state.cartInfo)
   const { doctoreDetaile } = useSelector(state => state.doctorDataReducer) || { doctoreDetaile };
   const { pricesymboldata } = useSelector(state => state.commonReducer) || {};
-  const { navigation } = props;
   const { t } = useTranslation();
   const { Colors } = useTheme();
   const CartTabStyles = useMemo(() => CartTabStyle(Colors), [Colors]);
@@ -53,10 +50,12 @@ const CartTab = ({ route, ...props }) => {
     <View style={CartTabStyles.minstyleviewphotograpgy}>
 
       {/* My cart data is displayed here */}
-      <View>
-        <Text>Item Name in Cart: {product ? product.name : ''}</Text>
+      {/*<View>*/}
+      {/*  {cartDataInfo.map(cart => (*/}
+      {/*      <Text>Item Name in Cart: {cart ? cart.name : ''}</Text>*/}
+      {/*  ))}*/}
 
-      </View>
+      {/*</View>*/}
 
 
       <StatusBar barStyle="dark-content" backgroundColor={Colors.bgwhite} />
@@ -72,7 +71,7 @@ const CartTab = ({ route, ...props }) => {
                 </View>
                 <View style={CartTabStyles.flexicondighit}>
                   <Text><VectoreIcons icon="Feather" name="shopping-bag" size={SF(20)} color={Colors.black_text_color} /></Text>
-                  <Text style={CartTabStyles.twodigitset}>2</Text>
+                  <Text style={CartTabStyles.twodigitset}>{cartDataInfo.length}</Text>
                 </View>
               </View>
               <TouchableOpacity onPress={() => navigation.navigate(RouteName.HOME_TAB)}>
@@ -81,7 +80,7 @@ const CartTab = ({ route, ...props }) => {
             </View>
             <Spacing space={SH(20)} />
             <FlatList
-              data={cartData}
+              data={cartDataInfo}
               renderItem={({ item, index }) => (<CartFlatListFun item={item} RemoveItemFun={() => RemoveItemFun()}
                 AddItemFun={() => AddItemFun()} count={count} pricesymboldata={pricesymboldata} Applycoupon={Applycoupon}
               />)}

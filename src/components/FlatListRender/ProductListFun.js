@@ -16,12 +16,12 @@ const ProductListFun = (props) => {
         <TouchableOpacity style={ProductItemListStyles.bgwhiteboxminviewWrap}>
             <View style={ProductItemListStyles.bgwhiteboxminview}>
                 <TouchableOpacity style={ProductItemListStyles.setimageviewstyle} onPress={() => ProductDatilsHandle()}>
-                    <Image style={ProductItemListStyles.pharamacyimagestyle} resizeMode="contain" source={item.image} />
+                    <Image style={ProductItemListStyles.pharamacyimagestyle} resizeMode="contain" source={{uri: item.image}} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => ProductDatilsHandle()}>
-                    <Text style={ProductItemListStyles.textProductItemListStylesimple}>{t(item.text)}</Text>
+                    <Text style={ProductItemListStyles.textProductItemListStylesimple}>{t(item.name)}</Text>
                 </TouchableOpacity>
-                <Text style={ProductItemListStyles.settextcolorcenterlist}>{t(item.hospitalname)}</Text>
+                <Text style={ProductItemListStyles.settextcolorcenterlist}>{t(item.category)}</Text>
                 <View style={ProductItemListStyles.setflexstadr}>
                     <RatingFun
                         type='custom'
@@ -30,13 +30,13 @@ const ProductListFun = (props) => {
                         ratingCount={5}
                         tintColor={Colors.white_text_color}
                         imageSize={16}
-                        startingValue={item.startValue}
+                        startingValue={4.5}
                         isDisabled={true}
                     />
-                    <Text style={ProductItemListStyles.setratingtextstyle}>{t(item.ratingtext)}</Text>
+                    <Text style={ProductItemListStyles.setratingtextstyle}>4.5</Text>
                 </View>
                 <View style={ProductItemListStyles.justicenterflexrow}>
-                    <Text style={ProductItemListStyles.textProductItemListStylesimple}>{pricesymboldata} {t(item.dolartestproice)}</Text>
+                    <Text style={ProductItemListStyles.textProductItemListStylesimple}>{item.price.split(" – ")[1]}</Text>
                     <TouchableOpacity style={ProductItemListStyles.setplusbgcolorset} onPress={() => CartHandle()}>
                         <VectoreIcons icon="Entypo" name="plus" size={SF(20)} color={Colors.white_text_color} />
                     </TouchableOpacity>
