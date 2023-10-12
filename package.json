@@ -38,6 +38,7 @@
     "react-native-animated-nav-tab-bar": "3.1.8",
     "react-native-animated-pagination-dots": "0.1.72",
     "react-native-app-intro-slider": "4.0.4",
+    "react-native-dotenv": "^3.4.9",
     "react-native-eject": "0.1.2",
     "react-native-elements": "3.4.2",
     "react-native-flatlist-slider": "1.0.6",

@@ -11,6 +11,7 @@ import { SH, SF, Colors, checkoutItemData } from '../../utils';
 import images from '../../index';
 
 const CheckOutScreen = (props) => {
+  const {cartData: cartDataInfo} = useSelector(state => state.cartInfo)
   const { navigation } = props;
   const { t } = useTranslation();
   const { Colors } = useTheme();
@@ -22,6 +23,7 @@ const CheckOutScreen = (props) => {
   const [count, setCount] = useState(1);
   const [Applycoupon, setApplycoupon] = useState(0);
   const [value, onChangeText] = useState('');
+  const [totalAmount, setTotalAmount] = useState(0);
 
   const dispatch = useDispatch();
   let PriceSymbol = '£';
@@ -29,6 +31,15 @@ const CheckOutScreen = (props) => {
   useEffect(() => {
     dispatch(price_symbol_action(PriceSymbol));
   }, []);
+
+  useEffect(() => {
+    let total = Number(0)
+    setTotalAmount(0)
+    cartDataInfo.forEach(data => {
+      total = Number(total) + Number(Number(data.price.split(' – ')[0].replace('£', '')).toFixed(2))
+    })
+    setTotalAmount(total)
+  }, [cartDataInfo]);
 
   let alertdataUpdate = {
     updateAlet: t("Apply_Successfully_Label"),
@@ -90,7 +101,7 @@ const CheckOutScreen = (props) => {
                 <Spacing space={SH(20)} />
                 <View style={CartTabStyles.padH20}>
                   <FlatList
-                    data={checkoutItemData}
+                    data={cartDataInfo}
                     renderItem={({ item, index }) => (<CheckOutFlatFun item={item} onPress={() => navigation.navigate(RouteName.PRODUCT_DETAILS_SCREEN)} Applycoupon={Applycoupon} pricesymboldata={pricesymboldata} count={count} />)}
                   />
                   <Spacing space={SH(20)} />
@@ -118,12 +129,12 @@ const CheckOutScreen = (props) => {
                     {Applycoupon === 0 ?
                       <View style={CartTabStyles.flexrowspacebeetveen}>
                         <Text style={CartTabStyles.subtotaltext}>{t("Subtotal_Label")}</Text>
-                        <Text style={CartTabStyles.digitaltext}>{pricesymboldata} {175 * count}</Text>
+                        <Text style={CartTabStyles.digitaltext}>{pricesymboldata} {totalAmount.toFixed(2)}</Text>
                       </View>
                       :
                       <View style={CartTabStyles.flexrowspacebeetveen}>
                         <Text style={CartTabStyles.subtotaltext}>{t("Subtotal_Label")}</Text>
-                        <Text style={CartTabStyles.digitaltext}>{pricesymboldata} {105 * count}</Text>
+                        <Text style={CartTabStyles.digitaltext}>{pricesymboldata} {totalAmount.toFixed(2)}</Text>
                       </View>
                     }
                     {Applycoupon === 0 ?
@@ -140,12 +151,12 @@ const CheckOutScreen = (props) => {
                     {Applycoupon === 0 ?
                       <View style={CartTabStyles.flexrowspacebeetveen}>
                         <Text style={CartTabStyles.digitaltextsettwo}>{t("Total_Label")}</Text>
-                        <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {220 * count}</Text>
+                        <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {Number(totalAmount.toFixed(2)) + 45}</Text>
                       </View>
                       :
                       <View style={CartTabStyles.flexrowspacebeetveen}>
                         <Text style={CartTabStyles.digitaltextsettwo}>{t("Total_Label")}</Text>
-                        <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {140 * count}</Text>
+                        <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {Number(totalAmount.toFixed(2)) + 45}</Text>
                       </View>
                     }
                   </View>
@@ -160,14 +171,14 @@ const CheckOutScreen = (props) => {
           {Applycoupon === 0 ?
             <View style={CartTabStyles.textcenyet}>
               <View>
-                <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {220 * count}</Text>
+                <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {Number(totalAmount.toFixed(2)) + 45}</Text>
                 <Text style={CartTabStyles.viewdetailesbilltext}>{t("View_Detailed_Bill_Label")}</Text>
               </View>
             </View>
             :
             <View style={CartTabStyles.textcenyet}>
               <View>
-                <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {140 * count}</Text>
+                <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {Number(totalAmount.toFixed(2)) + 45}</Text>
                 <Text style={CartTabStyles.viewdetailesbilltext}>{t("View_Detailed_Bill_Label")}</Text>
               </View>
             </View>

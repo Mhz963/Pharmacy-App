@@ -14,20 +14,20 @@ const CheckOutFlatFun = (props) => {
         <View style={CartTabStyles.flexminviewcount}>
             <View style={CartTabStyles.flexiconandimagetext}>
                 <View>
-                    <Image style={CartTabStyles.setimagehightwidth} resizeMode="contain" source={images.cartitemImg} />
+                    <Image style={CartTabStyles.setimagehightwidth} resizeMode="contain" source={{uri: item.image}} />
                 </View>
                 <View>
-                    <Text style={CartTabStyles.pistahouse}>{t(item.itemName)}</Text>
+                    <Text style={CartTabStyles.pistahouse}>{t(item.name)}</Text>
                 </View>
             </View>
             <View style={CartTabStyles.flexiconandimagetext}>
                 {Applycoupon === 0 ?
                     <TouchableOpacity>
-                        <Text style={CartTabStyles.digitalsawtwext}>{pricesymboldata} {175 * count}</Text>
+                        <Text style={CartTabStyles.digitalsawtwext}>{item.price.split(" – ")[0]}</Text>
                     </TouchableOpacity>
                     :
                     <TouchableOpacity>
-                        <Text style={CartTabStyles.digitalsawtwext}>{pricesymboldata} {105 * count}</Text>
+                        <Text style={CartTabStyles.digitalsawtwext}>{item.price.split(" – ")[0]}</Text>
                     </TouchableOpacity>
                 }
             </View>

@@ -25,6 +25,8 @@ const CartTab = ({ route, navigation }) => {
   const [Applycoupon, setApplycoupon] = useState(0);
   const dispatch = useDispatch();
 
+  const [totalAmount, setTotalAmount] = useState(0);
+
   let PriceSymbol = '£';
 
   useEffect(() => {
@@ -34,6 +36,14 @@ const CartTab = ({ route, navigation }) => {
     });
   }, [navigation]);
 
+  useEffect(() => {
+    let total = Number(0)
+    setTotalAmount(0)
+    cartDataInfo.forEach(data => {
+      total = Number(total) + Number(data.price.split(' – ')[0].replace('£', ''))
+    })
+    setTotalAmount(total)
+  }, [cartDataInfo]);
 
 
   const AddItemFun = () => {
@@ -95,14 +105,14 @@ const CartTab = ({ route, navigation }) => {
           {Applycoupon === 0 ?
             <View style={CartTabStyles.textcenyet}>
               <View>
-                <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {175 * count}</Text>
+                <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {totalAmount.toFixed(2)}</Text>
                 <Text style={CartTabStyles.viewdetailesbilltext}>{t("Total_Amount_Label")}</Text>
               </View>
             </View>
             :
             <View style={CartTabStyles.textcenyet}>
               <View>
-                <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {140 * count}</Text>
+                <Text style={CartTabStyles.digitaltextsettwo}>{pricesymboldata} {totalAmount.toFixed(2)}</Text>
                 <Text style={CartTabStyles.viewdetailesbilltext}>{t("Total_Amount_Label")}</Text>
               </View>
             </View>

@@ -45,32 +45,6 @@ const PaymentScreen = (props) => {
                 </TouchableOpacity>
                 <View style={PaymentStyles.setflexrowarrowlefttwo}>
                 </View>
-                <Text style={PaymentStyles.cardtextstyletwo}>{t("UPI_Label")}</Text>
-                <TouchableOpacity style={PaymentStyles.flexrowcreditcardtwo} onPress={() => navigation.navigate(RouteName.PAYMENT_SUCCESSFULLY)}>
-                  <View style={PaymentStyles.iconsetborderwidth}>
-                    <Image source={images.Paytem_image} resizeMode='center' style={PaymentStyles.setbgimage} />
-                  </View>
-                  <Text style={PaymentStyles.creditcardtext}>{t("Paytm_UPI_Label")}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={PaymentStyles.flexrowcreditcardtwo} onPress={() => navigation.navigate(RouteName.PAYMENT_SUCCESSFULLY)}>
-                  <View style={PaymentStyles.iconsetborderwidth}>
-                    <Image source={images.google_pay_image} resizeMode='center' style={PaymentStyles.setbgimage} />
-                  </View>
-                  <Text style={PaymentStyles.creditcardtext}>{t("Google_Pay_Label")}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={PaymentStyles.flexrowcreditcardtwo} onPress={() => navigation.navigate(RouteName.PAYMENT_SUCCESSFULLY)}>
-                  <View style={PaymentStyles.iconsetborderwidth}>
-                    <Image source={images.Phone_Pay_Image} resizeMode='center' style={PaymentStyles.setbgimage} />
-                  </View>
-                  <Text style={PaymentStyles.creditcardtext}>{t("Phone_Pay_Label")}</Text>
-                </TouchableOpacity>
-                <Text style={PaymentStyles.cardtextstylethree}>{t("Wallets_Label")}</Text>
-                <FlatList
-                  data={Paymentdata}
-                  renderItem={({ item, index }) => (<PaymentAccordian item={item} show={show} onPress={() => toggleHandler(item.id)} />)}
-                  keyExtractor={item => item.id}
-                  style={PaymentStyles.flatelist}
-                />
               </View>
             </View>
           </View>
