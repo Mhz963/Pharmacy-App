@@ -38,7 +38,7 @@ const PopularHomeFlatFun = (props) => {
                     </View>
                     <View style={HometabStyles.flexrowsetrating}>
                         <View style={HometabStyles.dicscounttextflex}>
-                            <Text style={HometabStyles.settextpricebold}>{item.price.split(" – ")[1]}</Text>
+                            <Text style={HometabStyles.settextpricebold}>{item.price.split(" – ")[0]}</Text>
                         </View>
                     </View>
                 </View>

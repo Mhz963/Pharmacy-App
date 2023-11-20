@@ -34,8 +34,8 @@ const DealsOfTheDay = (props) => {
             </View>
             <Spacing />
             <View style={HometabStyles.flexrowsettext}>
-                <Text style={HometabStyles.settextprice}>{item.price.split(" – ")[1]}</Text>
-                <Text style={HometabStyles.settextpricetwo}>{pricesymboldata}{(Number(item.price.split(" – ")[1].replace('£', '')) * 1.1).toFixed(2)}</Text>
+                <Text style={HometabStyles.settextprice}>{item.price.split(" – ")[0]}</Text>
+                <Text style={HometabStyles.settextpricetwo}>{pricesymboldata}{(Number(item.price.split(" – ")[0].replace('£', '')) * 1.1).toFixed(2)}</Text>
             </View>
             <View style={HometabStyles.flexrocenterjusty}>
                 <View style={HometabStyles.addbutttonwidth}>

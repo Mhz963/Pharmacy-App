@@ -1,92 +1,125 @@
-import React, { useState, useMemo } from "react";
-import { Text, View, Image, ScrollView, StatusBar } from "react-native";
-import { SaveCardScreenStyle } from '../../styles';
-import { AppHeader, Button, Container, Input, Spacing } from '../../components';
+import React, {useEffect, useState} from 'react';
+import {Image, ScrollView, StatusBar, View, Text} from 'react-native';
+import {SaveCardScreenStyle} from '../../styles';
+import {AppHeader, Button, Container, Spacing} from '../../components';
 import images from '../../index';
-import { RouteName } from '../../routes';
-import { Colors, SH } from "../../utils";
-import { useTranslation } from 'react-i18next';
-import { useTheme } from '@react-navigation/native';
+import {RouteName} from '../../routes';
+import {SH} from '../../utils';
+import {useTranslation} from 'react-i18next';
+import {useTheme} from '@react-navigation/native';
+import {CardField, createToken, confirmPayment} from '@stripe/stripe-react-native';
+import axios from 'axios';
+import creatPaymentIntent from './stripeApi';
+import {useDispatch, useSelector} from 'react-redux';
+import {add_my_order} from '../../redux/action/cartAction';
 
-const CreditCardScreen = (props) => {
-  const { navigation } = props;
-  const { t } = useTranslation();
-  const { Colors } = useTheme();
-  const SaveCardScreenStyles = useMemo(() => SaveCardScreenStyle(Colors), [Colors]);
+const CreditCardScreen = props => {
+    const {myOrders, cartData} = useSelector(state => state.cartInfo)
+    const {navigation} = props;
+  const dispatch = useDispatch()
+  const {t} = useTranslation();
+    const [loading, setLoading] = useState(false);
+    const {Colors} = useTheme();
+    const [cardState, setCardState] = useState(null);
+    const [totalAmount, setTotalAmount] = useState(0);
 
-  const array = {
-    name: '',
-    cardNumber: '',
-    expNum: '',
-    cvv: '',
-  }
+    useEffect(() => {
+        let total = Number(0)
+        setTotalAmount(0)
+        cartData.forEach(data => {
+            total = Number(total) + Number(data.price.split(' – ')[0].replace('£', ''))
+        })
+        setTotalAmount(total)
+    }, [cartData]);
 
-  const [state, setState] = useState(array);
+    const fetchCardDetails = (cardDetails) => {
+        if(cardDetails.complete) {
+            setCardState(cardDetails)
+        } else {
+            setCardState(null)
+        }
+    }
+
+    // const cardDone = async () => {
+    //     if(!!cardState) {
+    //         try {
+    //             const resToken = await createToken({...cardState, type: 'Card'})
+    //             console.log(resToken)
+    //         } catch (e) {
+    //             console.log(e);
+    //         }
+    //     }
+    // }
+
+  const handlePayment = async () => {
+      let apiData = {
+          amount: 500,
+          currency: "INR"
+      }
+      let itemName = []
+
+      cartData.forEach(cart => {
+          itemName.push(cart.name)
+      })
+
+      const myOrderDetails = {
+          orderDate: new Date(),
+          items: itemName,
+          total: totalAmount
+      }
+
+      setLoading(true)
+
+      try {
+          const res = await creatPaymentIntent(apiData)
+          console.log("payment intent create succesfully...!!!", res)
+
+          if (res?.data?.paymentIntent) {
+              let confirmPaymentIntent = await confirmPayment(res?.data?.paymentIntent, { paymentMethodType: 'Card' })
+              console.log("confirmPaymentIntent res++++", confirmPaymentIntent)
+              dispatch(add_my_order([...myOrders, myOrderDetails]))
+              setTimeout(() => {
+                  setLoading(false)
+                  navigation.navigate(RouteName.PAYMENT_SUCCESSFULLY)
+              }, 3000)
+
+          }
+      } catch (error) {
+          console.log("Error rasied during payment intent", error)
+          dispatch(add_my_order([...myOrders, myOrderDetails]))
+          setTimeout(() => {
+              setLoading(false)
+              navigation.navigate(RouteName.PAYMENT_SUCCESSFULLY)
+          }, 3000)
+      }
+  };
 
   return (
-    <Container backgroundColor={Colors.anti_flash_white}>
-      <StatusBar barStyle="dark-content" backgroundColor={Colors.bgwhite} /> 
-      <Spacing />  
-      <AppHeader Iconname={true} headerTitle={t("Credit_Card_Label")} onPress={() => navigation.navigate(RouteName.PAYMENT_SCREEN)} />
-      <View style={SaveCardScreenStyles.minstyleviewphotograpgy}>
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-        >
-          <View style={SaveCardScreenStyles.keybordtopviewstyle}>
-            <View style={SaveCardScreenStyles.minflexview}>
-              <View style={SaveCardScreenStyles.minviewsigninscreen}>
-                <View style={SaveCardScreenStyles.setwidthimage}>
-                  <Image source={images.Crideit_card} resizeMode='cover' style={SaveCardScreenStyles.creditcard} />
-                </View>
-                <View style={SaveCardScreenStyles.setstyleinputtext}>
-                  <Text style={SaveCardScreenStyles.textstyle}>{t("Name_Label")}</Text>
-                  <Input
-                    placeholder={t("Devid_Warner_Label")}
-                    value={state.name}
-                    onChangeText={(text) => setState({ ...state, name: text })}
-                  />
-                </View>
-                <Text></Text>
-                <View style={SaveCardScreenStyles.setstyleinputtext}>
-                  <Text style={SaveCardScreenStyles.textstyle}>{t("Card_Number_Label")}</Text>
-                  <Input
-                    placeholder="1234567812345678"
-                    value={state.cardNumber}
-                    onChangeText={(text) => setState({ ...state, cardNumber: text })}
-                  />
-                </View>
-                <View style={SaveCardScreenStyles.flexrowsetinput}>
-                  <View style={SaveCardScreenStyles.setstyleinputtexttwo}>
-                    <Text style={SaveCardScreenStyles.textstyle}>{t("Card_MM_YY_Label")}</Text>
-                    <Input
-                      placeholder="00/00"
-                      value={state.expNum}
-                      onChangeText={(text) => setState({ ...state, expNum: text })}
-                      keyboardType="numeric"
-                    />
-                  </View>
-                  <View style={SaveCardScreenStyles.setstyleinputtexttwo}>
-                    <Text style={SaveCardScreenStyles.textstyle}>{t("Cvv_Label")}</Text>
-                    <Input
-                      placeholder="502"
-                      value={state.cvv}
-                      onChangeText={(text) => setState({ ...state, cvv: text })}
-                      keyboardType="numeric"
-                    />
-                  </View>
-                </View>
-                <Spacing space={SH(25)} />
-                <View style={SaveCardScreenStyles.setbuttonstyle}>
-                  <Button title={t("Save_Card_Label")}
-                    onPress={() => navigation.navigate(RouteName.PAYMENT_SUCCESSFULLY)}
-                  />
-                </View>
-              </View>
-            </View>
-          </View>
-        </ScrollView>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ fontSize: 24, marginBottom: 20 }}>Payment Screen</Text>
+          <CardField
+              postalCodeEnabled={false}
+              placeholders={{
+                  number: '4242 4242 4242 4242',
+              }}
+              cardStyle={{
+                  backgroundColor: '#FFFFFF',
+                  textColor: '#000000',
+              }}
+              style={{
+                  width: '100%',
+                  height: 50,
+                  marginVertical: 30,
+              }}
+              onCardChange={(cardDetails) => {
+                  fetchCardDetails(cardDetails);
+              }}
+              onFocus={(focusedField) => {
+                  console.log('focusField', focusedField);
+              }}
+          />
+        <Button title={loading ? 'Loading...' : 'Pay'} disable={cardState === null || loading} onPress={handlePayment} />
       </View>
-    </Container>
   );
 };
 

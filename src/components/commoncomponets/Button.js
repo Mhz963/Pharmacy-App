@@ -33,12 +33,15 @@ function Buttons(props) {
       }),
     [disable, spacedImages, Colors],
   );
+
+    console.log(disable);
   return (
-    <TouchableOpacity>
+    <TouchableOpacity disabled={disable}>
       <Button
         title={title}
         onPress={onPress}
         icon={icon}
+        disabled={disable}
         linearGradientProps={linearGradientProps}
         buttonStyle={[styles.buttonStyle, { ...buttonStyle }]}
         titleStyle={[styles.buttonTextStyle, { ...buttonTextStyle }]}

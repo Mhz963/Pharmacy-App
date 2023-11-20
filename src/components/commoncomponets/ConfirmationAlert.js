@@ -75,12 +75,12 @@ SweetaelertModal.defaultProps = {
 SweetaelertModal.propTypes = {
     message: propTypes.string,
     setModalVisible: propTypes.func,
-    modalVisible: propTypes.boolean,
+    modalVisible: propTypes.bool,
     onPress: propTypes.func,
     onPressCancel: propTypes.func,
     buttonText: propTypes.string,
     cancelButtonText: propTypes.string,
-    iconVisible: propTypes.boolean
+    iconVisible: propTypes.bool
 };
 
 export default SweetaelertModal;

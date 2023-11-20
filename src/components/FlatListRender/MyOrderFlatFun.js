@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from '@react-navigation/native';
 import { SF } from '../../utils';
 import { VectoreIcons } from '../../components';
+import images from '../../index';
+import moment from 'moment';
 
 const MyOrderFlatFun = (props) => {
     const { item, index, onPress } = props;
@@ -18,15 +20,15 @@ const MyOrderFlatFun = (props) => {
                 <View style={YourOrderScreenStyles.flexminviewset}>
                     <View style={YourOrderScreenStyles.flexrowsettext}>
                         <View>
-                            <Image style={YourOrderScreenStyles.yourorderdata} resizeMode='cover' source={item.image} />
+                            <Image style={YourOrderScreenStyles.yourorderdata} resizeMode='cover' source={images.myorderImg1} />
                         </View>
                         <View style={YourOrderScreenStyles.priceflextext}>
                             <View style={YourOrderScreenStyles.setwidth70}>
-                                <Text style={YourOrderScreenStyles.vadapavtextstyeleset}>{t(item.itemName)}</Text>
-                                <Text style={YourOrderScreenStyles.addreshrtext}>{t(item.sitytext)}</Text>
+                                <Text style={YourOrderScreenStyles.vadapavtextstyeleset}>{t('MyOrder_Item_Name_Label_1')}</Text>
+                                <Text style={YourOrderScreenStyles.addreshrtext}>{t('MyOrder_SubHead_Label_1')}</Text>
                             </View>
                             <View>
-                                <Text style={YourOrderScreenStyles.vadapavtextstyeleset}>{t(item.price)}</Text>
+                                <Text style={YourOrderScreenStyles.vadapavtextstyeleset}>{item.total.toFixed(2)}</Text>
                             </View>
                         </View>
                     </View>
@@ -34,27 +36,21 @@ const MyOrderFlatFun = (props) => {
             </View>
             <View style={YourOrderScreenStyles.borderbottomviewtwo}>
                 <View style={YourOrderScreenStyles.setlistdataitems}>
-                    <Text style={YourOrderScreenStyles.setitemstext}>{t(item.items)}</Text>
-                    <Text style={YourOrderScreenStyles.blacktitle}>{t(item.onevx)}</Text>
+                    <Text style={YourOrderScreenStyles.setitemstext}>{t('ITEMS_Label')}</Text>
+                    {item.items.map(orderItem => (
+                        <Text style={YourOrderScreenStyles.blacktitle}>{orderItem}</Text>
+                    ))}
                 </View>
                 <View style={YourOrderScreenStyles.setlistdataitems}>
-                    <Text style={YourOrderScreenStyles.setitemstext}>{t(item.orderontext)}</Text>
-                    <Text style={YourOrderScreenStyles.blacktitle}>{t(item.timetextset)}</Text>
+                    <Text style={YourOrderScreenStyles.setitemstext}>{t('ORDERED_ON_Label')}</Text>
+                    <Text style={YourOrderScreenStyles.blacktitle}>{moment(item.orderDate).format('DD MMM YYYY')} at {moment(item.orderDate).format('h:mm A')}</Text>
                 </View>
             </View>
             <View style={YourOrderScreenStyles.flexrowsettextrejected}>
-                {index === 0 || index === 2 || index === 3 || index === 5 ?
-                    <TouchableOpacity style={YourOrderScreenStyles.flexreowdilevry}>
-                        <VectoreIcons icon="Ionicons" name={"checkmark-done"} color={Colors.green_color} size={SF(25)} />
-                        <Text style={YourOrderScreenStyles.rejectedtextstyle}>{t(item.rejectedtext)}</Text>
-                    </TouchableOpacity>
-                    : null}
-                {index === 1 || index === 4 || index === 6 || index === 7 ?
-                    <TouchableOpacity style={YourOrderScreenStyles.flexreowdilevry}>
-                        <VectoreIcons icon="MaterialCommunityIcons" name={"close-octagon"} color={Colors.text_red} size={SF(25)} />
-                        <Text style={YourOrderScreenStyles.rejectedtextRedstyle}>{t(item.rejectedtext)}</Text>
-                    </TouchableOpacity>
-                    : null}
+                <TouchableOpacity style={YourOrderScreenStyles.flexreowdilevry}>
+                    <VectoreIcons icon="Ionicons" name={"checkmark-done"} color={Colors.green_color} size={SF(25)} />
+                    <Text style={YourOrderScreenStyles.rejectedtextstyle}>{t('Delivered_Label')}</Text>
+                </TouchableOpacity>
                 <TouchableOpacity style={YourOrderScreenStyles.setflexitemview} onPress={() => onPress()}>
                     <VectoreIcons icon="MaterialIcons" name="refresh" color={Colors.green_color} size={SF(20)} />
                     <Text style={YourOrderScreenStyles.rejectedtextstyle}>{t(item.repeatordertext)}</Text>

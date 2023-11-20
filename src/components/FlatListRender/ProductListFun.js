@@ -36,7 +36,7 @@ const ProductListFun = (props) => {
                     <Text style={ProductItemListStyles.setratingtextstyle}>4.5</Text>
                 </View>
                 <View style={ProductItemListStyles.justicenterflexrow}>
-                    <Text style={ProductItemListStyles.textProductItemListStylesimple}>{item.price.split(" – ")[1]}</Text>
+                    <Text style={ProductItemListStyles.textProductItemListStylesimple}>{item.price.split(" – ")[0]}</Text>
                     <TouchableOpacity style={ProductItemListStyles.setplusbgcolorset} onPress={() => CartHandle()}>
                         <VectoreIcons icon="Entypo" name="plus" size={SF(20)} color={Colors.white_text_color} />
                     </TouchableOpacity>

@@ -1,18 +1,31 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import { Text, View, Image, ScrollView, StatusBar, TouchableOpacity, } from "react-native";
 import { PaymentSuccessfully } from '../../styles';
 import images from '../../index';
 import { Colors } from "../../utils";
-import { Container, AppHeader, Spacing } from "../../components";
+import {Container, AppHeader, Spacing, Button} from '../../components';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@react-navigation/native';
 import { RouteName } from "../../routes";
+import moment from 'moment';
+import {useSelector} from 'react-redux';
 
 const PaymentSuccessFully = (props) => {
+  const {cartData: cartDataInfo} = useSelector(state => state.cartInfo)
   const { navigation } = props;
   const { t } = useTranslation();
   const { Colors } = useTheme();
   const PaymentSuccessfullys = useMemo(() => PaymentSuccessfully(Colors), [Colors]);
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  useEffect(() => {
+    let total = Number(0)
+    setTotalAmount(0)
+    cartDataInfo.forEach(data => {
+      total = Number(total) + Number(data.price.split(' – ')[0].replace('£', ''))
+    })
+    setTotalAmount(total)
+  }, [cartDataInfo]);
 
   return (
     <Container>
@@ -41,7 +54,7 @@ const PaymentSuccessFully = (props) => {
                     <Text style={PaymentSuccessfullys.totalamountpaid}>{t("TOTAL_AMOUNT_PAID_Label")}</Text>
                   </TouchableOpacity>
                   <TouchableOpacity>
-                    <Text style={PaymentSuccessfullys.proicetextset}>{t("20_Label")}</Text>
+                    <Text style={PaymentSuccessfullys.proicetextset}>£{totalAmount.toFixed(2)}</Text>
                   </TouchableOpacity>
                 </View>
                 <TouchableOpacity style={PaymentSuccessfullys.flexrowcoffitext}>
@@ -50,8 +63,9 @@ const PaymentSuccessFully = (props) => {
                 </TouchableOpacity>
                 <TouchableOpacity style={PaymentSuccessfullys.flexrowcoffitexttwo}>
                   <Text style={PaymentSuccessfullys.totalamountpaid}>{t("TRANCATION_DATE_Label")}</Text>
-                  <Text style={PaymentSuccessfullys.proicetextset}>{t("Payment_Tiem_Label")}</Text>
+                  <Text style={PaymentSuccessfullys.proicetextset}>{moment().format('DD MMM YYYY, HH:MM A')}</Text>
                 </TouchableOpacity>
+                <Button title={'My Order'} onPress={() => navigation.navigate(RouteName.YOUR_ORDER_SCREEN)} />
               </View>
             </View>
           </View>

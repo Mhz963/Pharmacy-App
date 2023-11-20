@@ -6,9 +6,11 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from '@react-navigation/native';
 import { SF, yourorderdata } from '../../../utils';
 import { VectoreIcons, MyOrderFlatFun } from '../../../components';
+import {useSelector} from 'react-redux';
 
 
 const MyOrderTab = (props) => {
+  const {myOrders} = useSelector(state => state.cartInfo)
   const { navigation } = props;
   const { t } = useTranslation();
   const { Colors } = useTheme();
@@ -24,7 +26,7 @@ const MyOrderTab = (props) => {
             <View style={YourOrderScreenStyles.minviewsigninscreen}>
               <View style={YourOrderScreenStyles.paddingtopset}>
                 <FlatList
-                  data={yourorderdata}
+                  data={myOrders}
                   renderItem={({ item, index }) => (<MyOrderFlatFun item={item} index={index} onPress={() => navigation.navigate(RouteName.CART_TAB)} />)}
                   keyExtractor={item => item.id}
                 />

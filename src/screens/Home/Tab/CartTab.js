@@ -81,7 +81,7 @@ const CartTab = ({ route, navigation }) => {
                 </View>
                 <View style={CartTabStyles.flexicondighit}>
                   <Text><VectoreIcons icon="Feather" name="shopping-bag" size={SF(20)} color={Colors.black_text_color} /></Text>
-                  <Text style={CartTabStyles.twodigitset}>{cartDataInfo.length}</Text>
+                  <Text style={CartTabStyles.twodigitset}>{cartDataInfo ? cartDataInfo?.length : 0}</Text>
                 </View>
               </View>
               <TouchableOpacity onPress={() => navigation.navigate(RouteName.HOME_TAB)}>
